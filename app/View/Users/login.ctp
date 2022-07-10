@@ -1,13 +1,17 @@
-<div class="users form">
-<?php echo $this->Flash->render('auth'); ?>
-<?php echo $this->Form->create('User'); ?>
-    <fieldset>
-        <legend>
-            <?php echo __('Please enter your username and password'); ?>
+<div class="login">
+    <fieldset id="entrarlogin">
+        <legend class="signin">
+            <?php echo __('Sign in'); ?>
         </legend>
-        <?php echo $this->Form->input('username');
-        echo $this->Form->input('password');
-    ?>
-    </fieldset>
-<?php echo $this->Form->end(__('Login')); ?>
+<?php 
+$login = $this->Form->create('User', array('class' => 'User'));
+$login .= $this->Flash->render('auth');
+$login .= $this->Form->input('username', array('class' => 'input'));
+$login .= $this->Form->input('password', array('class' => 'input'));
+$login .= $this->Form->button('Login', array('type' => 'submit', 'class' => 'entrar'));
+$login .= $this->Form->end(); 
+echo $login;
+?>
+</fieldset>
+
 </div>

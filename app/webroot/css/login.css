@@ -1,0 +1,27 @@
+.login{
+    background-color: rgba(0, 0, 0, 0.534);
+    padding: 10px 50px 10px 50px;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    margin: auto;  
+    margin-top: 100px;
+    border-radius: 20px;
+    font-style: normal;
+}
+.entrar{
+    color:black;
+    border-radius: 5px;
+    margin-top: 30px;
+    background-color: white;
+    border-color: white;
+}
+.signin{
+    color: black;
+    padding-top: 30px;
+}
+.input{
+    border-radius: 5px;
+    border-style: none;
+    color: black;
+}

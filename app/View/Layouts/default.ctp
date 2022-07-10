@@ -21,7 +21,6 @@
 
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/posts">Home</a></li>
             <li><a href="/users">Usuarios</a></li>
             <li><a href="/posts">Posts</a></li>
           </ul>

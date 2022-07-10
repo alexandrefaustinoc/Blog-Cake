@@ -20,6 +20,7 @@
     echo $this->Html->script('bootstrap-datepicker.min.js');
     echo $this->Html->script('bootstrap-datepicker.pt-BR.min.js');
     echo $this->Html->css('bootstrap.min.css');
+    echo $this->Html->css('login.css');
     echo $this->Html->css('container.css');
     echo $this->Html->css('icones.css')
     ?>
@@ -30,7 +31,6 @@
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/posts">Home</a></li>
             <li><a href="/users">Usuarios</a></li>
             <li><a href="/posts">Posts</a></li>
         </ul>

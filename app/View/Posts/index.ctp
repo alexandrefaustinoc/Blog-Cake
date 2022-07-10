@@ -17,11 +17,10 @@ $filtro .= $this->Form->input('Post.title', array(
 $filtro .= $this->Form->input('Post.created', array(
     'required' => false,
     'label' => array('text' => 'data', 'class' => 'sr-only'),
-    'data-provide' => 'datepicker',
     'class' => 'form-control',
     'div' => false,
-    'type' => 'text', 'id' => 'filtrar_data',
-    'placeholder' => 'Date'
+    'type' => 'text', 'id' => 'data_inicio',
+    'placeholder' => 'Data inicio'
 ));
 $filtro .= $this->Form->button('Filtrar', array('type' => 'submit', 'class' => 'btn btn-default'));
 $filtro .= $this->Form->end();
@@ -53,7 +52,10 @@ echo $filtro;
                         <a data-toggle="collapse" href="#<? echo $collapse ?>">
                             <?php echo $post['Post']['title']; ?>
                         </a>
-                        <div id="<? echo $collapse ?>" class="panel-collapse collapse">
+                        <div id="<? 
+                            if ($post['Post']['ativo'] == true) {
+                                echo $collapse;
+                            }?>" class="panel-collapse collapse">
                             <h1><?php echo h($post['Post']['title']); ?></h1>
                             <p><small>Created: <?php echo $post['Post']['created']; ?></small></p>
                             <p><?php echo h($post['Post']['body']); ?></p>
@@ -80,14 +82,14 @@ echo $filtro;
                     $this->Html->image('trash-can.svg', array('class' => 'glyphicon glyphicon-trash', 'title' => 'Excluir')) . " ",
                     array('action' => 'delete', $post['Post']['id']),
                     array('escape' => false),
-                    __('Are you sure you want to delete # %s?', $post['Post']['id']),
+                    __('Se você deseja excluir o post %s pressione OK!', $post['Post']['id']),
                     array('class' => 'btn btn-mini')
                 );
                 ?>
             </td>
             <td class="text-center">
                 <?php
-                    if ($post['Post']['status'] == true) {
+                    if ($post['Post']['ativo'] == true) {
                         print_r('Ativo');
                     } else {
                         print_r('Inativo');
@@ -98,7 +100,7 @@ echo $filtro;
     <?php endforeach; ?>
 </table>
 <script type="text/javascript">
-    $('#filtrar_data').datepicker({
+    $('#data_inicio').datepicker({
         language: "pt-BR",
         format: "yyyy/mm/dd",
         todayBtn: "linked",
