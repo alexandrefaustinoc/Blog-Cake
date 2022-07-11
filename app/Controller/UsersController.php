@@ -16,7 +16,7 @@ class UsersController extends AppController {
             if ($this->Auth->login()) {
                 return $this->redirect($this->Auth->redirectUrl('/Posts'));
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            $this->Flash->error(__('Nome de usuário ou senha inválidos, tente novamente'));
         }
     }
     
@@ -33,7 +33,7 @@ class UsersController extends AppController {
     public function view($id = null) {
         $this->User->id = $id;
         if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__('Usuário invalido'));
         }
         $this->set('user', $this->User->findById($id));
     }
@@ -42,11 +42,11 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Flash->success(__('The user has been saved'));
+                $this->Flash->success(__('O usuário foi salvo'));
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
+                __('O usuário não pôde ser salvo. Por favor, tente novamente.')
             );
         }
     }
@@ -54,15 +54,15 @@ class UsersController extends AppController {
     public function edit($id = null) {
         $this->User->id = $id;
         if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__('Usuário invalido'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->User->save($this->request->data)) {
-                $this->Flash->success(__('The user has been saved'));
+                $this->Flash->success(__('O usuário foi salvo'));
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
+                __('O usuário não pôde ser salvo. Por favor, tente novamente.')
             );
         } else {
             $this->request->data = $this->User->findById($id);
@@ -78,13 +78,13 @@ class UsersController extends AppController {
 
         $this->User->id = $id;
         if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__('Usuário invalido'));
         }
         if ($this->User->delete()) {
-            $this->Flash->success(__('User deleted'));
+            $this->Flash->success(__('Usuário excluído'));
             return $this->redirect(array('action' => 'index'));
         }
-        $this->Flash->error(__('User was not deleted'));
+        $this->Flash->error(__('O usuário não foi excluído'));
         return $this->redirect(array('action' => 'index'));
     }
 

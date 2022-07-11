@@ -32,7 +32,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <ul class="nav navbar-nav">
             <li><a href="/users/logout">Sair</a></li>
-            <li><a href="/users">Usuarios</a></li>
+            
             <li><a href="/posts">Posts</a></li>
         </ul>
     </nav>

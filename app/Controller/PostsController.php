@@ -58,10 +58,10 @@ class PostsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             $this->Post->id = $id;
             if ($this->Post->save($this->request->data)) {
-                $this->Flash->success(__('Postagem aterado com sucesso.'));
+                $this->Flash->success(__('Postagem alterado com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->error(__('Post não pode ser alterado.'));
+            $this->Flash->error(__('Postagem não pôde ser alterado.'));
         }
     
         if (!$this->request->data) {

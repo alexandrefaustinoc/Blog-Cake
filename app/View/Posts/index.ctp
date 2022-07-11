@@ -15,6 +15,7 @@ $filtro .= $this->Form->input('Post.title', array(
 ));
 //Filtor data
 $filtro .= $this->Form->input('Post.created', array(
+    'novalidate' => 'novalidate',
     'required' => false,
     'label' => array('text' => 'data', 'class' => 'sr-only'),
     'class' => 'form-control',
@@ -99,6 +100,24 @@ echo $filtro;
         </tr>
     <?php endforeach; ?>
 </table>
+<?php
+$links = array(
+    $this->Paginator->first('Primeiro', array('class' => 'page-link')),
+    $this->Paginator->prev('Anterior', array('class' => 'page-link')),
+    $this->Paginator->next('Próxima', array('class' => 'page-link')),
+    $this->Paginator->last('Última', array('class' => 'page-link'))
+);
+$paginate = $this->Html->nestedList($links, array('class' => 'pagination'), array('class' => 'page-item'));
+$paginate = $this->Html->tag('nav', $paginate);
+$paginateCount = $this->Paginator->counter(
+    '{:page} de {:pages}, mostrando {:current} registro de {:count} começando em {:start}, até {:end}'
+);
+$paginateBar = $this->Html->div('row',
+    $this->Html->div('col-md-6', $paginate) .
+    $this->Html->div('col-md-6', $paginateCount)
+);
+echo $paginateBar;
+?>
 <script type="text/javascript">
     $('#data_inicio').datepicker({
         language: "pt-BR",
